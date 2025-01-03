@@ -15,7 +15,12 @@ import React, { useCallback } from 'react';
           name: transcription.name,
           createdAt: transcription.createdAt,
           status: transcription.status,
-          versions: transcription.versions,
+          versions: transcription.versions.map(version => ({
+            type: version.type,
+            text: version.text,
+            createdAt: version.createdAt,
+            status: version.status
+          })),
           tags: transcription.tags,
         }, null, 2);
         const blob = new Blob([json], { type: 'application/json' });
